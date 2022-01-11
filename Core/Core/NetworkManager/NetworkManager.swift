@@ -13,7 +13,7 @@ class NetworkManager<Model> : NSObject, URLSessionTaskDelegate where Model:Codab
     private var subscribers : Set<AnyCancellable>
     
     typealias ResponseClosure = (Model) -> Void
-    typealias ErrorClosure = (PError) -> Void
+    typealias ErrorClosure = (NError) -> Void
     
     static var shared: NetworkManager<Model> {
         return NetworkManager<Model>()
@@ -37,7 +37,6 @@ class NetworkManager<Model> : NSObject, URLSessionTaskDelegate where Model:Codab
         request.httpMethod = requestMethod.rawValue
         
         // HTTP Headers
-        request.allHTTPHeaderFields = Network.headers
         request.cachePolicy = .reloadIgnoringLocalCacheData
         request.timeoutInterval = Network.timeOutInterval
         let session = URLSession(configuration: .default)
@@ -51,20 +50,20 @@ class NetworkManager<Model> : NSObject, URLSessionTaskDelegate where Model:Codab
                 if case .failure(let err) = completions {
                     if (err as? URLError)?.code == .timedOut {
                         //Should Check Network Connection
-                        let err = PError(errorType: .toBeShown, errorMessage: "Can't connect to server")
+                        let err = NError(errorType: .toBeShown, errorMessage: "Can't connect to server")
                         error(err)
                         return
                     } else if (err as? Swift.DecodingError) != nil {
-                        let err = PError(errorType: .toBeShown, errorMessage: "Can't parse data")
+                        let err = NError(errorType: .toBeShown, errorMessage: "Can't parse data")
                         error(err)
                         return
                     } else if (err as NSError).code == -1009 || (err as NSError).code == -1020 {
-                        var err = PError(errorType: .other, errorMessage: "No Internet")
+                        var err = NError(errorType: .other, errorMessage: "No Internet")
                         err.errorCode = -1009
                         error(err)
                         return
                     }
-                    let err = PError(errorType: .toBeShown, errorMessage: err.localizedDescription)
+                    let err = NError(errorType: .toBeShown, errorMessage: err.localizedDescription)
                     error(err)
                     print(err)
                 }

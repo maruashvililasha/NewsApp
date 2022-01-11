@@ -19,16 +19,16 @@ class Controller {
         return nc
     }
     
-    static func getMovieListViewController() -> MovieListViewController {
+    static func getMovieListViewController() -> NewsViewController {
         let viewModel = appDependencyContainer.newsDependencies()
         let vc = NewsViewController.instantiateFromStoryboard()
         vc.viewModel = viewModel
         return vc
     }
     
-    static func getWebViewController(with: URL) -> WebViewController {
+    static func getWebViewController(with url: URL) -> WebViewController {
         let vc = WebViewController.instantiateFromStoryboard()
-        vc.url = URL
+        vc.url = url
         return vc
     }
 

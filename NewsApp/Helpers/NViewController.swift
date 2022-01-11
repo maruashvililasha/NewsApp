@@ -19,7 +19,7 @@ extension Storyboarded {
 
 extension Storyboarded where Self: UIViewController {
     public static func instantiateFromStoryboard() -> Self {
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(identifier: "com.maruashvililasha.Processica-Movies"))
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(identifier: "com.maruashvililasha.NewsApp"))
         guard let viewController: Self
             = storyboard.instantiateViewController(withIdentifier: storyboardIdentifier)
                 as? Self else {

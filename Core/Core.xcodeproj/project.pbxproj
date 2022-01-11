@@ -11,11 +11,13 @@
 		4C24910B278CDC2D00EBB603 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249108278CDC2D00EBB603 /* NetworkManager.swift */; };
 		4C24910C278CDC2D00EBB603 /* PError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249109278CDC2D00EBB603 /* PError.swift */; };
 		4C24910D278CDC2D00EBB603 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24910A278CDC2D00EBB603 /* Network.swift */; };
-		4C24910F278CDCC900EBB603 /* GetPopularMoviesResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24910E278CDCC900EBB603 /* GetPopularMoviesResponce.swift */; };
+		4C24910F278CDCC900EBB603 /* GetNewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24910E278CDCC900EBB603 /* GetNewsResponse.swift */; };
 		4C249112278CDCD200EBB603 /* NewsLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249110278CDCD200EBB603 /* NewsLocalDataSource.swift */; };
 		4C249113278CDCD200EBB603 /* NewsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249111278CDCD200EBB603 /* NewsRemoteDataSource.swift */; };
 		4C249116278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249114278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift */; };
 		4C249117278CDCDC00EBB603 /* NewsDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249115278CDCDC00EBB603 /* NewsDataRepository.swift */; };
+		4C24912A278CE31600EBB603 /* GetFeaturedNewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */; };
+		4C24912D278CEF3500EBB603 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24912C278CEF3500EBB603 /* Data+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +26,13 @@
 		4C249108278CDC2D00EBB603 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4C249109278CDC2D00EBB603 /* PError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PError.swift; sourceTree = "<group>"; };
 		4C24910A278CDC2D00EBB603 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		4C24910E278CDCC900EBB603 /* GetPopularMoviesResponce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPopularMoviesResponce.swift; sourceTree = "<group>"; };
+		4C24910E278CDCC900EBB603 /* GetNewsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNewsResponse.swift; sourceTree = "<group>"; };
 		4C249110278CDCD200EBB603 /* NewsLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsLocalDataSource.swift; sourceTree = "<group>"; };
 		4C249111278CDCD200EBB603 /* NewsRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRemoteDataSource.swift; sourceTree = "<group>"; };
 		4C249114278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDataRepositoryInterface.swift; sourceTree = "<group>"; };
 		4C249115278CDCDC00EBB603 /* NewsDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDataRepository.swift; sourceTree = "<group>"; };
+		4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeaturedNewsResponse.swift; sourceTree = "<group>"; };
+		4C24912C278CEF3500EBB603 /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 				4C249107278CDC1F00EBB603 /* CoreData */,
 				4C249106278CDC0900EBB603 /* NetworkManager */,
 				4C249102278CDBBC00EBB603 /* NewsList */,
+				4C24912B278CEF2200EBB603 /* Extension */,
 				4C2490E5278CD78800EBB603 /* Core.h */,
 			);
 			path = Core;
@@ -82,7 +87,8 @@
 		4C249103278CDBC600EBB603 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4C24910E278CDCC900EBB603 /* GetPopularMoviesResponce.swift */,
+				4C24910E278CDCC900EBB603 /* GetNewsResponse.swift */,
+				4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +126,14 @@
 			children = (
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4C24912B278CEF2200EBB603 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4C24912C278CEF3500EBB603 /* Data+Extensions.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,10 +220,12 @@
 				4C249113278CDCD200EBB603 /* NewsRemoteDataSource.swift in Sources */,
 				4C249117278CDCDC00EBB603 /* NewsDataRepository.swift in Sources */,
 				4C24910C278CDC2D00EBB603 /* PError.swift in Sources */,
-				4C24910F278CDCC900EBB603 /* GetPopularMoviesResponce.swift in Sources */,
+				4C24912A278CE31600EBB603 /* GetFeaturedNewsResponse.swift in Sources */,
+				4C24910F278CDCC900EBB603 /* GetNewsResponse.swift in Sources */,
 				4C24910D278CDC2D00EBB603 /* Network.swift in Sources */,
 				4C249116278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift in Sources */,
 				4C249112278CDCD200EBB603 /* NewsLocalDataSource.swift in Sources */,
+				4C24912D278CEF3500EBB603 /* Data+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -326,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -352,6 +368,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,6 +399,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,5 +8,6 @@
 import Foundation
 
 public protocol NewsDataRepositoryInterface {
-    func getNews(page: Int, completion: @escaping(Result<[MovieEntity],PError>) -> Void)
+    func getNews(completion: @escaping(Result<[Article], NError>) -> Void)
+    func getFeaturedNews(completion: @escaping(Result<Article?, NError>) -> Void)
 }

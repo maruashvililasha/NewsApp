@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class NewsViewController: NViewController {
 
@@ -13,7 +14,23 @@ class NewsViewController: NViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        bind()
+        viewModel.getData()
     }
+    
+    private func bind() {
+        viewModel.loadingFinished.bind { success in
+            print("Loading Finished", success, separator: " - ")
+        }
+        
+        viewModel.featuredNews.bind { featuredArticle in
+            print(featuredArticle)
+        }
+        
+        viewModel.news.bind { news in
+            print(news)
+        }
+    }
+    
 }
 

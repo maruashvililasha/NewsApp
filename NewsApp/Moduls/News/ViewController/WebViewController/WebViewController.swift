@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import WebKit
 
 class WebViewController: NViewController {
     
     @IBOutlet weak var webView: WKWebView!
     
-    let url: URL!
+    var url: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()

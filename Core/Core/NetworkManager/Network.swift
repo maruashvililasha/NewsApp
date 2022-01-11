@@ -12,9 +12,9 @@ class Network {
     // Building URL
     static var urlBuilder = URLComponents()
     static let https = "https"
-    static let host = "api.themoviedb.org"
+    static let host = "newsapi.org"
     
-    static let apiKey = "15f906f5ed76fffacf74d06f7d77f34e"
+    static let apiKey = "3694dad9cbc345c3b86afe90fe329cca"
     
     static let posterPath = "https://image.tmdb.org/t/p/original/"
 
@@ -24,14 +24,9 @@ class Network {
         return urlBuilder
     }
     
-    static var headers: [String: String] {
-        return ["Authorization": "Bearer \(apiKey)"]
-    }
-    
     static var params: [URLQueryItem] {
         let params : [URLQueryItem] = [
-            URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: "en-US")
+            URLQueryItem(name: "apiKey", value: apiKey)
         ]
         return params
     }

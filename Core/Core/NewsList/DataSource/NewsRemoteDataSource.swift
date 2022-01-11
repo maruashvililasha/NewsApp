@@ -8,24 +8,24 @@
 import Foundation
 
 public protocol NewsRemoteDataSourceInterface {
-    func getPopularMovies(page: Int, completion: @escaping (Result<GetPopularMoviesResponce, PError>) -> Void)
+    func getFeaturedNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void)
+    func getNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void)
 }
 
 public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
     
     var requests = Set<NSObject>()
     
-    required public init() {
-    }
+    required public init() {}
     
-    public func getPopularMovies(page: Int, completion: @escaping (Result<GetPopularMoviesResponce, PError>) -> Void) {
-        let path = "/3/movie/popular/"
+    public func getFeaturedNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void) {
+        let path = "/v2/top-headlines"
         
         // parameters
         var params = Network.params
-        params.append(URLQueryItem(name: "page", value: "\(page)"))
+        params.append(URLQueryItem(name: "country", value: "us"))
         
-        let manager = NetworkManager<GetPopularMoviesResponce>.shared
+        let manager = NetworkManager<GetNewsResponse>.shared
         manager.sendRequest(path: path, requestMethod: .get, params: params) { [weak self] error in
             completion(.failure(error))
             self?.requests.remove(manager)
@@ -35,4 +35,25 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
         }
         self.requests.insert(manager)
     }
+    
+    public func getNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void) {
+        let path = "/v2/everything"
+        
+        // parameters
+        var params = Network.params
+        params.append(URLQueryItem(name: "domains", value: "techcrunch.com"))
+        params.append(URLQueryItem(name: "sortBy", value: "popularity"))
+        
+        let manager = NetworkManager<GetNewsResponse>.shared
+        manager.sendRequest(path: path, requestMethod: .get, params: params) { [weak self] error in
+            completion(.failure(error))
+            self?.requests.remove(manager)
+        } response: { [weak self] response in
+            completion(.success(response))
+            self?.requests.remove(manager)
+        }
+        self.requests.insert(manager)
+    }
+    
+    
 }
