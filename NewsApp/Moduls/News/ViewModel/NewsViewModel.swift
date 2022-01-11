@@ -24,7 +24,9 @@ class NewsViewModel {
     
     func getData(page: Int = 1) {
         getNews(page: page)
-        getFeaturedNews()
+        if featuredNews.value == nil {
+            getFeaturedNews()
+        }
         getDataGroup.notify(queue: .main, execute: { [weak self] in
             self?.loadingFinished.accept(true)
         })
