@@ -22,6 +22,10 @@ class WebViewController: NViewController {
         webView.navigationDelegate = self
         ProgressHUD.show()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ProgressHUD.dismiss()
+    }
 }
 
 extension WebViewController: WKNavigationDelegate {
