@@ -18,7 +18,7 @@ public struct GetNewsResponse: Codable {
 public struct Article: Codable {
     public let title, articleDescription: String
     public let url: String
-    public let urlToImage: String
+    public let urlToImage: String?
     public let publishedAt: String
     
     enum CodingKeys: String, CodingKey {

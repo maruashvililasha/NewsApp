@@ -44,7 +44,7 @@ class NetworkManager<Model> : NSObject, URLSessionTaskDelegate where Model:Codab
             .dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.main)
             .tryMap { data, _ in
-                data.prettyPrint()
+//                data.prettyPrint()
                 return try JSONDecoder().decode(Model.self, from: data)
             }.sink { completions in
                 if case .failure(let err) = completions {

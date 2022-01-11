@@ -30,12 +30,12 @@ class NewsTableViewCell: UITableViewCell {
     func configure(with article: Article) {
         self.titleLabel.text = article.title
         self.descriptionLabel.text = article.articleDescription
-        self.dateLabel.text = article.publishedAt
-        guard let imageUrl = URL(string: article.urlToImage) else {
-            coverImageView.image = nil
+        self.dateLabel.text = article.publishedAt.prettyPrinted()
+        guard let imageUrlString = article.urlToImage, let imageUrl = URL(string: imageUrlString) else {
+            coverImageView.image = UIImage(named: "NewsLogo")
             return
         }
-        coverImageView.kf.setImage(with: imageUrl, placeholder: nil)
+        coverImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "NewsLogo"))
     }
 
 }

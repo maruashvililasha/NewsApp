@@ -14,7 +14,7 @@ class Network {
     static let https = "https"
     static let host = "newsapi.org"
     
-    static let apiKey = "3694dad9cbc345c3b86afe90fe329cca"
+    static let apiKey = "5a2bfda34a694d7daf2d78614dd835c8"
     
     static let posterPath = "https://image.tmdb.org/t/p/original/"
 

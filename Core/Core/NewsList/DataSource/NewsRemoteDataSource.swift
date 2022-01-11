@@ -48,6 +48,7 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
         var params = Network.params
         params.append(URLQueryItem(name: "domains", value: "techcrunch.com"))
         params.append(URLQueryItem(name: "sortBy", value: "popularity"))
+        params.append(URLQueryItem(name: "language", value: "en"))
         
         let manager = NetworkManager<GetNewsResponse>.shared
         manager.sendRequest(path: path, requestMethod: .get, params: params) { [weak self] error in

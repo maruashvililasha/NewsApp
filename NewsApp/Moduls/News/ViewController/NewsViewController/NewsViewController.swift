@@ -24,7 +24,8 @@ class NewsViewController: NViewController {
             newsTableView.reloadData()
         }
     }
-
+    
+    private let refreshControl = UIRefreshControl()
     var viewModel: NewsViewModel!
     
     override func viewDidLoad() {
@@ -36,12 +37,21 @@ class NewsViewController: NViewController {
     }
     
     private func setupUI() {
+        newsTableView.refreshControl = refreshControl
         newsTableView.delegate = self
         newsTableView.dataSource = self
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Weather Data
+        ProgressHUD.show()
+        viewModel.getData()
     }
     
     private func bind() {
-        viewModel.loadingFinished.bind { success in
+        viewModel.loadingFinished.bind { [weak self] success in
+            self?.refreshControl.endRefreshing()
             ProgressHUD.dismiss()
         }
         viewModel.error.bind { error in
@@ -98,9 +108,32 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if featuredNews != nil && indexPath.row == 0  {
-            return 350
+            return 250
         } else {
-            return 200
+            return 160
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        var url : URL?
+        if let featuredNews = featuredNews {
+            if indexPath.row == 0 {
+                url = URL(string: featuredNews.url)
+            } else {
+                let article = news[indexPath.row - 1]
+                url = URL(string: article.url)
+            }
+        } else {
+            let article = news[indexPath.row]
+            url = URL(string: article.url)
+        }
+        guard let url = url else {
+            ProgressHUD.showFailed("URL Not found")
+            return
+        }
+        ProgressHUD.show()
+        let vc = Controller.getWebViewController(with: url)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
