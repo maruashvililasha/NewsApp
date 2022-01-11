@@ -208,18 +208,76 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpW-yB-mSr">
+                                <rect key="frame" x="107" y="777" width="200" height="75"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="ATb-s7-EDm">
+                                        <rect key="frame" x="10" y="10" width="180" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-xE-YO9">
+                                                <rect key="frame" x="0.0" y="0.0" width="32.5" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="3wJ-xE-YO9" secondAttribute="height" multiplier="13:22" id="LBg-Pc-gNn"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="previousPagebuttonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhW-UT-ozI"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66Q-2i-mpx">
+                                                <rect key="frame" x="79.5" y="0.0" width="21" height="55"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oh-HF-PwU">
+                                                <rect key="frame" x="147.5" y="0.0" width="32.5" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="6Oh-HF-PwU" secondAttribute="height" multiplier="13:22" id="67l-qu-mf3"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="chevron.right" catalog="system"/>
+                                                <connections>
+                                                    <action selector="nextPagebuttonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLh-Hz-wIW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ATb-s7-EDm" secondAttribute="bottom" constant="10" id="9E5-FK-FNJ"/>
+                                    <constraint firstAttribute="width" constant="200" id="ZWF-SS-7Fk"/>
+                                    <constraint firstItem="ATb-s7-EDm" firstAttribute="leading" secondItem="UpW-yB-mSr" secondAttribute="leading" constant="10" id="asL-Ud-NNz"/>
+                                    <constraint firstAttribute="trailing" secondItem="ATb-s7-EDm" secondAttribute="trailing" constant="10" id="hCW-Qm-KbG"/>
+                                    <constraint firstAttribute="width" secondItem="UpW-yB-mSr" secondAttribute="height" multiplier="40:15" id="rNt-on-bb0"/>
+                                    <constraint firstItem="ATb-s7-EDm" firstAttribute="top" secondItem="UpW-yB-mSr" secondAttribute="top" constant="10" id="rQA-TH-Mku"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="lr9-26-bGy" secondAttribute="bottom" id="Ibl-nC-yyx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UpW-yB-mSr" secondAttribute="bottom" constant="10" id="OTe-y0-4gS"/>
                             <constraint firstItem="lr9-26-bGy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aFJ-pf-zOM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lr9-26-bGy" secondAttribute="trailing" id="dST-CW-6MC"/>
                             <constraint firstItem="lr9-26-bGy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fcd-wq-9CP"/>
+                            <constraint firstItem="UpW-yB-mSr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mEg-Qp-iGK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="newsTableView" destination="lr9-26-bGy" id="huS-QT-NSe"/>
+                        <outlet property="nextPageButton" destination="6Oh-HF-PwU" id="AlA-wI-Az2"/>
+                        <outlet property="pageNunberLabel" destination="66Q-2i-mpx" id="Aej-2U-Gmg"/>
+                        <outlet property="paginationView" destination="UpW-yB-mSr" id="nyu-Za-uF1"/>
+                        <outlet property="previousPageButton" destination="3wJ-xE-YO9" id="n0p-UL-vhh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -228,6 +286,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

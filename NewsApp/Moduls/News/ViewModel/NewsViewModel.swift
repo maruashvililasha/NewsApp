@@ -22,17 +22,17 @@ class NewsViewModel {
         self.dataRepo = dataRepo
     }
     
-    func getData() {
-        getNews()
+    func getData(page: Int = 1) {
+        getNews(page: page)
         getFeaturedNews()
         getDataGroup.notify(queue: .main, execute: { [weak self] in
             self?.loadingFinished.accept(true)
         })
     }
     
-    func getNews() {
+    func getNews(page: Int) {
         getDataGroup.enter()
-        dataRepo.getNews { [weak self] result in
+        dataRepo.getNews(page: page, completion: { [weak self] result in
             switch result {
             case .success(let news):
                 self?.news.accept(news)
@@ -40,7 +40,7 @@ class NewsViewModel {
             case .failure(let error):
                 self?.error.accept(error)
             }
-        }
+        })
     }
     
     func getFeaturedNews() {

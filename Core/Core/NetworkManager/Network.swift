@@ -15,8 +15,6 @@ class Network {
     static let host = "newsapi.org"
     
     static let apiKey = "5a2bfda34a694d7daf2d78614dd835c8"
-    
-    static let posterPath = "https://image.tmdb.org/t/p/original/"
 
     static var apiUrl: URLComponents {
         urlBuilder.scheme = https

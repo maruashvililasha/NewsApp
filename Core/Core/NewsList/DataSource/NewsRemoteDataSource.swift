@@ -9,7 +9,7 @@ import Foundation
 
 public protocol NewsRemoteDataSourceInterface {
     func getFeaturedNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void)
-    func getNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void)
+    func getNews(page: Int, completion: @escaping (Result<GetNewsResponse, NError>) -> Void)
 }
 
 public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
@@ -41,7 +41,7 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
         self.requests.insert(manager)
     }
     
-    public func getNews(completion: @escaping (Result<GetNewsResponse, NError>) -> Void) {
+    public func getNews(page: Int, completion: @escaping (Result<GetNewsResponse, NError>) -> Void) {
         let path = "/v2/everything"
         
         // parameters
@@ -49,6 +49,7 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
         params.append(URLQueryItem(name: "domains", value: "techcrunch.com"))
         params.append(URLQueryItem(name: "sortBy", value: "popularity"))
         params.append(URLQueryItem(name: "language", value: "en"))
+        params.append(URLQueryItem(name: "page", value: "\(page)"))
         
         let manager = NetworkManager<GetNewsResponse>.shared
         manager.sendRequest(path: path, requestMethod: .get, params: params) { [weak self] error in

@@ -12,6 +12,19 @@ import ProgressHUD
 class NewsViewController: NViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var pageNunberLabel: UILabel!
+    @IBOutlet weak var nextPageButton: UIButton!
+    @IBOutlet weak var previousPageButton: UIButton!
+    
+    @IBOutlet weak var paginationView: UIView!
+    
+    var currentPage = 1 {
+        didSet {
+            ProgressHUD.show()
+            viewModel.getData(page: currentPage)
+            pageNunberLabel.text = "\(currentPage)"
+        }
+    }
     
     var featuredNews: Article? {
         didSet {
@@ -36,11 +49,20 @@ class NewsViewController: NViewController {
         viewModel.getData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1.5) {
+            self.paginationView.alpha = 1
+        }
+    }
+    
     private func setupUI() {
+        paginationView.alpha = 0
         newsTableView.refreshControl = refreshControl
         newsTableView.delegate = self
         newsTableView.dataSource = self
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        previousPageButton.isEnabled = false
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -67,6 +89,20 @@ class NewsViewController: NViewController {
         viewModel.news.bind { [weak self] news in
             print("Received News")
             self?.news = news
+        }
+    }
+    
+    @IBAction func nextPagebuttonDidTap(_ sender: UIButton) {
+        if currentPage == 1 {
+            previousPageButton.isEnabled = true
+        }
+        currentPage += 1
+    }
+    
+    @IBAction func previousPagebuttonDidTap(_ sender: UIButton) {
+        currentPage -= 1
+        if currentPage == 1 {
+            previousPageButton.isEnabled = false
         }
     }
 }
