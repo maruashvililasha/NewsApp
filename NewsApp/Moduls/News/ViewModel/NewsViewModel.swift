@@ -20,14 +20,14 @@ class NewsViewModel {
     
     public init(dataRepo: NewsDataRepositoryInterface) {
         self.dataRepo = dataRepo
-        getDataGroup.notify(queue: .main, execute: { [weak self] in
-            self?.loadingFinished.accept(true)
-        })
     }
     
     func getData() {
         getNews()
         getFeaturedNews()
+        getDataGroup.notify(queue: .main, execute: { [weak self] in
+            self?.loadingFinished.accept(true)
+        })
     }
     
     func getNews() {
@@ -36,10 +36,10 @@ class NewsViewModel {
             switch result {
             case .success(let news):
                 self?.news.accept(news)
+                self?.getDataGroup.leave()
             case .failure(let error):
                 self?.error.accept(error)
             }
-            self?.getDataGroup.leave()
         }
     }
     
@@ -49,10 +49,10 @@ class NewsViewModel {
             switch result {
             case .success(let featuredNews):
                 self?.featuredNews.accept(featuredNews)
+                self?.getDataGroup.leave()
             case .failure(let error):
                 self?.error.accept(error)
             }
-            self?.getDataGroup.leave()
         }
     }
     

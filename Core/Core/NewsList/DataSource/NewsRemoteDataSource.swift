@@ -31,6 +31,11 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
             self?.requests.remove(manager)
         } response: { [weak self] response in
             completion(.success(response))
+            guard response.status != "error" else {
+                completion(.failure(NError(errorType: .toBeShown, errorMessage: response.message ?? "Server Error", endpoint: path)))
+                self?.requests.remove(manager)
+                return
+            }
             self?.requests.remove(manager)
         }
         self.requests.insert(manager)
@@ -49,6 +54,11 @@ public class NewsRemoteDataSource: NewsRemoteDataSourceInterface {
             completion(.failure(error))
             self?.requests.remove(manager)
         } response: { [weak self] response in
+            guard response.status != "error" else {
+                completion(.failure(NError(errorType: .toBeShown, errorMessage: response.message ?? "Server Error", endpoint: path)))
+                self?.requests.remove(manager)
+                return
+            }
             completion(.success(response))
             self?.requests.remove(manager)
         }

@@ -21,7 +21,10 @@ public class NewsDataRepository: NewsDataRepositoryInterface {
         remoteDataSource.getNews { result in
             switch result {
             case .success(let response):
-                completion(.success(response.articles))
+                guard let articles = response.articles else {
+                    return
+                }
+                completion(.success(articles))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -32,7 +35,7 @@ public class NewsDataRepository: NewsDataRepositoryInterface {
         remoteDataSource.getFeaturedNews { result in
             switch result {
             case .success(let response):
-                guard let featuredNews = response.articles.first else {
+                guard let featuredNews = response.articles?.first else {
                     completion(.failure(NError(errorType: .couldBeRejected, errorMessage: "No Article", endpoint: nil)))
                     return
                 }

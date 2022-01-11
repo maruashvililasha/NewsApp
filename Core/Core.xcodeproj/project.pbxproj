@@ -16,7 +16,6 @@
 		4C249113278CDCD200EBB603 /* NewsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249111278CDCD200EBB603 /* NewsRemoteDataSource.swift */; };
 		4C249116278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249114278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift */; };
 		4C249117278CDCDC00EBB603 /* NewsDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249115278CDCDC00EBB603 /* NewsDataRepository.swift */; };
-		4C24912A278CE31600EBB603 /* GetFeaturedNewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */; };
 		4C24912D278CEF3500EBB603 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24912C278CEF3500EBB603 /* Data+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +30,6 @@
 		4C249111278CDCD200EBB603 /* NewsRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRemoteDataSource.swift; sourceTree = "<group>"; };
 		4C249114278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDataRepositoryInterface.swift; sourceTree = "<group>"; };
 		4C249115278CDCDC00EBB603 /* NewsDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDataRepository.swift; sourceTree = "<group>"; };
-		4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeaturedNewsResponse.swift; sourceTree = "<group>"; };
 		4C24912C278CEF3500EBB603 /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				4C24910E278CDCC900EBB603 /* GetNewsResponse.swift */,
-				4C249129278CE31600EBB603 /* GetFeaturedNewsResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,7 +217,6 @@
 				4C249113278CDCD200EBB603 /* NewsRemoteDataSource.swift in Sources */,
 				4C249117278CDCDC00EBB603 /* NewsDataRepository.swift in Sources */,
 				4C24910C278CDC2D00EBB603 /* PError.swift in Sources */,
-				4C24912A278CE31600EBB603 /* GetFeaturedNewsResponse.swift in Sources */,
 				4C24910F278CDCC900EBB603 /* GetNewsResponse.swift in Sources */,
 				4C24910D278CDC2D00EBB603 /* Network.swift in Sources */,
 				4C249116278CDCDC00EBB603 /* NewsDataRepositoryInterface.swift in Sources */,
